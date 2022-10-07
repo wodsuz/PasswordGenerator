@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Title, Checkboxes } from "../components";
+import { Modal } from "../components";
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex h-screen">
         <div className="w-2/3 m-auto bg-white rounded opacity-50 h-2/3">
-          <Title />
+          <Modal />
         </div>
       </div>
     </>
