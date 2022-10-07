@@ -2,7 +2,13 @@ import { useState, useCallback } from "react";
 import { generatePassword } from "../../utils/utils";
 
 function Slider(props: any) {
-  const [perc, setPerc] = useState("30");
+  const [perc, setPerc] = useState("29");
+
+  const style = {
+    "--value": perc,
+    "--size": "3rem",
+    "--thickness": "2px",
+  } as React.CSSProperties;
 
   const handleSliderChange = useCallback(
     (pwLength: string) => {
@@ -27,10 +33,7 @@ function Slider(props: any) {
           defaultValue={perc}
           onChange={(e) => handleSliderChange(e.target.value)}
         />
-        <div
-          className="mb-5 ml-5 text-black radial-progress"
-          style={{ "--value": perc, "--size": "3rem", "--thickness": "2px" }}
-        >
+        <div className="mb-5 ml-5 text-black radial-progress" style={style}>
           {`${perc}`}
         </div>
       </div>

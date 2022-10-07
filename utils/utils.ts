@@ -11,6 +11,7 @@ export function generatePassword(pwLength: number, checked?: boolean[]) {
     // password += lowerCaseCharset.charAt(Math.floor(Math.random() * n));
     password += lowerCaseCharset.charAt(Math.floor(Math.random() * n));
   }
+  console.log("pw: " + password);
 
   return password;
 }

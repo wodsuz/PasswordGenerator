@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Title, Preferances, Checkboxes } from "../components";
+import { Title, Checkboxes } from "../components";
 
 const Home: NextPage = () => {
   return (
