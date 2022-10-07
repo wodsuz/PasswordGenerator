@@ -19,6 +19,11 @@
       "id": 3,
       "state": true,
       "label": "#?$"
+    },
+    {
+      "id": 4,
+      "state": true,
+      "label": "Space"
     }
   ]
 }

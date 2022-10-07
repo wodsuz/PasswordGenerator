@@ -5,7 +5,7 @@ import { generatePassword } from "../../utils/utils";
 
 const Checkboxes = (props: any) => {
   const checkData = CheckboxesData.CheckboxesData;
-  const [checkedState, setCheckedState] = useState(new Array(4).fill(true));
+  const [checkedState, setCheckedState] = useState(new Array(5).fill(true));
 
   const handleCheckBox = useCallback(
     (id: number) => {
@@ -13,7 +13,7 @@ const Checkboxes = (props: any) => {
         index === id ? !item : item
       );
       setCheckedState(updatedCheckedState);
-      const rndPw = generatePassword(updatedCheckedState);
+      const rndPw = generatePassword(8, updatedCheckedState);
       props.onCheck(rndPw);
     },
     [checkedState, props]

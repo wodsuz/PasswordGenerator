@@ -1,13 +1,22 @@
 import { useCallback, useState } from "react";
-import { Checkboxes } from "../index";
+import { Checkboxes, Slider } from "../index";
 import { generatePassword } from "../../utils/utils";
 
 function Title() {
   const [perc, setPerc] = useState(0);
-  const [password, setPassword] = useState(generatePassword());
+  const [password, setPassword] = useState(generatePassword(8));
 
   const getData = (data: any) => {
     setPassword(data);
+  };
+
+  const copyPassword = (event: any) => {
+    navigator.clipboard.writeText(password);
+    let element = event.target;
+    while (element.nodeName !== "BUTTON") {
+      element = element.parentNode;
+    }
+    element.parentNode.parentNode.removeChild(element.parentNode);
   };
 
   return (
@@ -18,6 +27,7 @@ function Title() {
       <h2 className="m-5 text-center text-black text-1xl">
         Create strong and secure passwords to keep your account safe online.
       </h2>
+
       <div className="flex justify-center text-center text-black underline underline-offset-8 ">
         <div className="flex justify-center">
           <input
@@ -30,9 +40,7 @@ function Title() {
           <button
             type="button"
             className="p-3 text-center text-blue-700 border border-blue-700 rounded-full hover:bg-blue-700 hover:text-white"
-            onClick={() =>
-              setPerc((original) => (original === 100 ? 0 : original + 10))
-            }
+            onClick={(e) => copyPassword(e)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,19 +59,8 @@ function Title() {
           </button>
         </div>
       </div>
-      <div className="pt-1 mt-5 text-center">
-        <input
-          type="range"
-          className="w-1/2 mr-2 range range-lg range-primary "
-          id="customRange1"
-        />
-        <div
-          className="mb-5 radial-progress"
-          style={{ "--value": "perc", "--size": "3rem", "--thickness": "2px" }}
-        >
-          {`${perc}%`}
-        </div>
-      </div>
+
+      <Slider onChnage={getData} />
 
       <Checkboxes onCheck={getData} />
     </>
