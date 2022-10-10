@@ -3,27 +3,32 @@
     {
       "id": 0,
       "state": true,
-      "label": "123"
+      "label": "abc",
+      "disabled": true
     },
     {
       "id": 1,
       "state": true,
-      "label": "abc"
+      "label": "123",
+      "disabled": false
     },
     {
       "id": 2,
       "state": true,
-      "label": "ABC"
+      "label": "ABC",
+      "disabled": false
     },
     {
       "id": 3,
       "state": true,
-      "label": "#?$"
+      "label": "#?$",
+      "disabled": false
     },
     {
       "id": 4,
       "state": true,
-      "label": "Space"
+      "label": "Space",
+      "disabled": false
     }
   ]
 }

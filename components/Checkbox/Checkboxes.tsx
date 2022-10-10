@@ -31,6 +31,7 @@ const Checkboxes = (props: any) => {
                   className="checkbox checkbox-primary"
                   checked={checkedState[item.id]}
                   onChange={() => handleCheckBox(item.id)}
+                  disabled={item.disabled}
                 />
                 <span className="ml-3 text-2xl">{item.label}</span>
               </label>

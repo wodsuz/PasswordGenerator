@@ -1,6 +1,4 @@
 const PwField = (props: any) => {
-  console.log("pp: " + props.pw);
-
   const copyPassword = () => {
     navigator.clipboard.writeText(props.pw);
     alert("password copied");

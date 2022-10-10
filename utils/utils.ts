@@ -1,17 +1,39 @@
-export function generatePassword(pwLength: number, checked?: boolean[]) {
-  var length = pwLength,
-    lowerCaseCharset = "abcdefghijklmnopqrstuvwxyz",
-    upperCaseCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    numberCharset = "0123456789",
-    specialCharset = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/\"",
-    space = " ",
-    password = "";
+const lowerCaseCharset = "abcdefghijklmnopqrstuvwxyz";
+const upperCaseCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numberCharset = "0123456789";
+const specialCharset = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/\"";
+const space = " ";
 
-  for (var i = 0, n = lowerCaseCharset.length; i < length; ++i) {
-    // password += lowerCaseCharset.charAt(Math.floor(Math.random() * n));
-    password += lowerCaseCharset.charAt(Math.floor(Math.random() * n));
+const preferancesArray = [
+  lowerCaseCharset,
+  numberCharset,
+  upperCaseCharset,
+  specialCharset,
+  space,
+];
+
+export function generatePassword(pwLength: number, checked?: boolean[]) {
+  let password = "";
+
+  if (checked) {
+    const filterArray = checked.flatMap((bool, index) => (bool ? index : []));
+
+    for (let i = 0; i < pwLength; ++i) {
+      const randomPreferance =
+        filterArray[Math.floor(Math.random() * filterArray.length)];
+      let selectedPreferance = preferancesArray[randomPreferance];
+      if (i === 0 && randomPreferance === 4)
+        selectedPreferance = preferancesArray[0];
+      if (i === pwLength - 1 && randomPreferance === 4)
+        selectedPreferance = preferancesArray[0];
+
+      password += selectedPreferance.charAt(
+        Math.floor(Math.random() * preferancesArray[randomPreferance].length)
+      );
+    }
+  } else {
+    password = "pass";
   }
-  console.log("pw: " + password);
 
   return password;
 }
