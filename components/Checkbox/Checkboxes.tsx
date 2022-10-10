@@ -8,34 +8,27 @@ import Slider from "../Slider";
 const Checkboxes = (props: any) => {
   const checkData = CheckboxesData.CheckboxesData;
   const [checkedState, setCheckedState] = useState(new Array(5).fill(true));
-  const [perc, setPerc] = useState("29");
-
-  const getData = (data: string) => {
-    setPerc(data);
-  };
 
   const handleCheckBox = useCallback(
     (id: number) => {
       const updatedCheckedState: boolean[] = checkedState.map((item, index) =>
         index === id ? !item : item
       );
-
+      const perc = localStorage.getItem("items") || "29";
       setCheckedState(updatedCheckedState);
       const rndPw = generatePassword(Number(perc), updatedCheckedState);
       props.onCheck(rndPw);
     },
-    [checkedState, perc, props]
+    [checkedState, props]
   );
 
   return (
     <>
-      <Slider onChnage={getData} />
-
       <div className="flex justify-center text-black ">
         {checkData.map((item) => {
           return (
             <div key={item.id}>
-              <label className="mr-5 cursor-pointer ">
+              <label className="mr-2 cursor-pointer sm:mr-5 ">
                 <input
                   type="checkbox"
                   className="checkbox checkbox-primary"
@@ -43,7 +36,7 @@ const Checkboxes = (props: any) => {
                   onChange={() => handleCheckBox(item.id)}
                   disabled={item.disabled}
                 />
-                <span className="ml-3 text-2xl">{item.label}</span>
+                <span className="ml-3 text-base sm:text-2xl">{item.label}</span>
               </label>
             </div>
           );

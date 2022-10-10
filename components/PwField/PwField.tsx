@@ -11,13 +11,13 @@ const PwField = (props: any) => {
           <input
             id="password-field"
             type="user"
-            className="items-center w-full px-8 py-2 text-white border-2 border-black rounded-lg bg-primary lg:text-2xl sm:text-xl focus:outline-none"
+            className="items-center w-full px-5 text-xl text-white border-2 border-black rounded-lg bg-primary sm:text-2xl focus:outline-none"
             value={props.pw}
             disabled={true}
           />
           <button
             type="button"
-            className="p-5 ml-3 text-center text-black border border-black rounded-full cursor-pointer hover:bg-blue-700 hover:text-white"
+            className="p-2 ml-3 text-black border border-black rounded-full cursor-pointer sm:p-5 hover:bg-blue-700 hover:text-white"
             onClick={copyPassword}
           >
             <svg
