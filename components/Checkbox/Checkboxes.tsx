@@ -3,24 +3,34 @@ import { useCallback, useState } from "react";
 import CheckboxesData from "./checkboxes.json";
 import { generatePassword } from "../../utils/utils";
 
+import Slider from "../Slider";
+
 const Checkboxes = (props: any) => {
   const checkData = CheckboxesData.CheckboxesData;
   const [checkedState, setCheckedState] = useState(new Array(5).fill(true));
+  const [perc, setPerc] = useState("29");
+
+  const getData = (data: string) => {
+    setPerc(data);
+  };
 
   const handleCheckBox = useCallback(
     (id: number) => {
       const updatedCheckedState: boolean[] = checkedState.map((item, index) =>
         index === id ? !item : item
       );
+
       setCheckedState(updatedCheckedState);
-      const rndPw = generatePassword(8, updatedCheckedState);
+      const rndPw = generatePassword(Number(perc), updatedCheckedState);
       props.onCheck(rndPw);
     },
-    [checkedState, props]
+    [checkedState, perc, props]
   );
 
   return (
     <>
+      <Slider onChnage={getData} />
+
       <div className="flex justify-center text-black ">
         {checkData.map((item) => {
           return (
