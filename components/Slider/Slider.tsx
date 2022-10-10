@@ -14,7 +14,7 @@ function Slider(props: any) {
     (pwLength: string) => {
       setPerc(pwLength);
 
-      const rndPw = generatePassword(Number(pwLength));
+      const rndPw = pwLength;
       props.onChnage(rndPw);
     },
     [props]

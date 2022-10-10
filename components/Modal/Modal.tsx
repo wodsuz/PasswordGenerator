@@ -13,7 +13,6 @@ const Modal = () => {
     <>
       <Title />
       <PwField pw={password} />
-      <Slider onChnage={getData} />
       <Checkboxes onCheck={getData} />
       <Info />
     </>
