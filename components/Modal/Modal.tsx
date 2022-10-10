@@ -6,14 +6,26 @@ import { generatePassword } from "../../utils/utils";
 const Modal = () => {
   const [password, setPassword] = useState(generatePassword(29));
 
-  const getData = (data: string) => {
-    setPassword(data);
+  const [sliderData, setSliderData] = useState("");
+  const [checkBoxData, setCheckBoxData] = useState("");
+
+  const getSliderData = (data: string) => {
+    console.log("sl DATA:" + data);
+    setSliderData(data);
   };
+
+  const getCHeckboxData = (data: string) => {
+    console.log("cb DATA:" + data);
+    setCheckBoxData(data);
+  };
+
   return (
     <>
       <Title />
       <PwField pw={password} />
-      <Checkboxes onCheck={getData} />
+      {sliderData} {checkBoxData}
+      <Slider onChnage={getSliderData} />
+      <Checkboxes onCheck={getCHeckboxData} />
       <Info />
     </>
   );

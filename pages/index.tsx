@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <title>Passwprd Generator</title>
       </Head>
       <div className="flex h-screen">
-        <div className="w-2/3 m-auto bg-white rounded opacity-50 h-2/3">
+        <div className="w-auto h-auto m-auto bg-white rounded opacity-60">
           <Modal />
         </div>
       </div>
